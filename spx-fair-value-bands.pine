@@ -1,0 +1,19 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © dharmatech
+
+//@version=5
+indicator("SPX Fair Value Bands", overlay = true)
+
+line_a = request.security("(WALCL - WTREGEN - RRPONTSYD)/1000/1000/1000/1.1 - 1625 + 350", "D", close)
+
+plot(series=line_a, title = 'Upper Band', color = color.orange)
+
+
+line_b = request.security("(WALCL - WTREGEN - RRPONTSYD)/1000/1000/1000/1.1 - 1625 - 150", "D", close)
+
+plot(series=line_b, title = 'Lower Band', color=color.aqua)
+
+
+fv = request.security("(WALCL - WTREGEN - RRPONTSYD)/1000/1000/1000/1.1 - 1625", "D", close)
+
+plot(series=fv, title = 'Fair Value', color=color.purple)
